@@ -8,12 +8,13 @@ from tensorflow import keras
 from keras.models import Sequential
 from keras.layers import Dense, LSTM, SimpleRNN, GRU
 from datetime import datetime
+import logging
 
-# Function to fetch stock data
+# Fetch stock data from Yahoo Finance
 def fetch_stock_data(symbol, start, end):
     return yf.download(symbol, start=start, end=end)
 
-# Function to prepare data
+# Prepare the data for training and testing, 80% train and 20% test, normalize the data
 def prepare_data(data, feature='Close'):
     closing_prices = data[feature].values.reshape(-1, 1)
     scaler = MinMaxScaler()
@@ -27,11 +28,28 @@ def prepare_data(data, feature='Close'):
 
 # Function to create sequences
 def create_sequences(data, sequence_length):
-    sequences, targets = [], []
-    for i in range(len(data) - sequence_length):
-        sequences.append(data[i:i+sequence_length])
-        targets.append(data[i+sequence_length])
-    return np.array(sequences), np.array(targets)
+    """
+    Create sequences from time series data for RNN training.
+    
+    Parameters:
+        - data (np.ndarray): Time series data.
+        - sequence_length (int): The length of each sequence.
+        
+    Returns:
+        - np.ndarray: Sequences of data.
+        - np.ndarray: Corresponding target values.
+    """
+    try: 
+        logging.info(f"Creating sequences of length {sequence_length}.")
+        sequences, targets = [], []
+        for i in range(len(data) - sequence_length):
+            sequences.append(data[i:i+sequence_length])
+            targets.append(data[i+sequence_length])
+        return np.array(sequences), np.array(targets)
+    except Exception as e:
+        logging.error(f"Error creating sequences: {e}")
+        return None, None
+    
 
 # Function to build a generalized RNN model
 def build_rnn_model(input_shape, rnn_type='LSTM', units=50):
