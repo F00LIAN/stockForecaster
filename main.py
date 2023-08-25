@@ -169,6 +169,10 @@ if 'START_DATE' in locals() and 'END_DATE' in locals():
     last_sequence = test_data[-SEQUENCE_LENGTH:]
     forecasted_prices = forecast_future(model, last_sequence, FUTURE_STEPS, scaler)
 
+    # Display the forecasted prices as list
+    st.subheader('List of Forecasted Prices')
+    st.write(forecasted_prices.flatten().tolist())
+
     # Prepare future dates for plotting
     last_date = stock_data.index[-1]
     future_dates = pd.date_range(last_date, periods=FUTURE_STEPS+1, freq='B')[1:]
@@ -177,3 +181,5 @@ if 'START_DATE' in locals() and 'END_DATE' in locals():
     st.header('Prediction and Future Forecast Results')
     fig = plot_results(true_prices[:min_length], predictions[:min_length], forecasted_prices, plot_dates[:min_length], future_dates)
     st.pyplot(fig)
+
+    
