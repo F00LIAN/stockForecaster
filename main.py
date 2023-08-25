@@ -169,9 +169,11 @@ if 'START_DATE' in locals() and 'END_DATE' in locals():
     last_sequence = test_data[-SEQUENCE_LENGTH:]
     forecasted_prices = forecast_future(model, last_sequence, FUTURE_STEPS, scaler)
 
-    # Display the forecasted prices as list
-    st.subheader('List of Forecasted Prices')
-    st.write(forecasted_prices.flatten().tolist())
+    # Or if you prefer as a table with 'Day x' keys
+    st.subheader('Table of Forecasted Prices')
+    forecasted_prices_df = pd.DataFrame(forecasted_prices, columns=["Forecasted Prices"])
+    forecasted_prices_df.index = [f"Day {i+1}" for i in range(forecasted_prices_df.shape[0])]
+    st.table(forecasted_prices_df)
 
     # Prepare future dates for plotting
     last_date = stock_data.index[-1]
@@ -182,4 +184,3 @@ if 'START_DATE' in locals() and 'END_DATE' in locals():
     fig = plot_results(true_prices[:min_length], predictions[:min_length], forecasted_prices, plot_dates[:min_length], future_dates)
     st.pyplot(fig)
 
-    
