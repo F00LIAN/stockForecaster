@@ -8,7 +8,7 @@
 
 <h2>Video Demonstration</h2>
 
-- ### [Forecasting Stock Outcomes Using RNN Methods](https://www.youtube.com/watch?v=wNsKf7wSqhQ)
+- ### [Forecasting Stock Outcomes Using RNN Methods(Coming Soon)](https://www.youtube.com/watch?v=wNsKf7wSqhQ)
 
 <h2>Environments and Technologies Used</h2>
 
