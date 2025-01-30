@@ -6,3 +6,4 @@ matplotlib
 yfinance
 scikit-learn
 keras
+ipykernel
