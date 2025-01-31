@@ -1,14 +1,16 @@
 <p align="center">
-<img src="https://github.com/user-attachments/assets/9e98d460-2d04-49c3-9784-0a15248fa60d"  height="40%" width="40%" alt="Equity Forecasting"/>
+  
+![Image](https://github.com/user-attachments/assets/44e748f6-d53c-48b7-b870-6651fe1a55a0)
+
 </p>
 
 <h1>Stock Price Forecasting using RNNs</h1>
 <p>This repository contains a Streamlit application for forecasting stock prices using different types of Recurrent Neural Networks (RNNs)—namely LSTM, GRU, and Simple RNN. The code herein was inspired by the Medium article on The Importance of Sequential Data and the broader context of Recurrent Neural Networks.</p>
 <br />
 
-<h2>Video Demonstration</h2>
+<h2>Try it Now!</h2>
 
-- ### [Forecasting Stock Outcomes Using RNN Methods(Coming Soon)](https://www.youtube.com/watch?v=wNsKf7wSqhQ)
+- ### [Forecasting Stock Outcomes Using RNN Methods Website](https://stockforecaster-hha6arjyjviqjw2kd7c9fp.streamlit.app/)
 
 <h2>Environments and Technologies Used</h2>
 
