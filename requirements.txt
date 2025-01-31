@@ -7,3 +7,4 @@ yfinance
 scikit-learn
 keras
 ipykernel
+setuptools
